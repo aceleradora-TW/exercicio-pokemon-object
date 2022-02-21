@@ -1,9 +1,12 @@
 let teste = require("./db")
+
 function pikachu(pokemon) {
-    let nome = pokemon.name
-    let tipo = pokemon.types[0]
-    let habilidade = pokemon.ability
-    console.log(`nome: ${nome} - Tipo: ${tipo}\nHabilidade: ${habilidade}`)
+    // let nome = pokemon.name
+    // let tipo = pokemon.types[0]
+    // let habilidade = pokemon.ability
+    console.log(`nome: ${pokemon.name} - Tipo: ${pokemon.types[0]}\nHabilidade: ${pokemon.ability}\n
+Linha de Evolução:
+${pokemon.preEvolution} >> ${pokemon.name.toUpperCase()} >> ${pokemon.evolution}`)
 }
 // console.log(pikachu(pokemon).lenght())
 console.log(pikachu(teste))
