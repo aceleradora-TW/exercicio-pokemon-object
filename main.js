@@ -1,32 +1,15 @@
 let teste = require("./db")
-
 function pikachu(pokemon) {
-    // let nome = pokemon.name
-    // let tipo = pokemon.types[0]
-    // let habilidade = pokemon.ability
-    console.log(`nome: ${pokemon.name} - Tipo: ${pokemon.types[0]}\nHabilidade: ${pokemon.ability}\n
-Linha de Evolução:
-${pokemon.preEvolution} >> ${pokemon.name.toUpperCase()} >> ${pokemon.evolution}`)
+
+
+
 }
-
-
-function setState(state) {
-    return pokemonInfo[state.pokemonInfo, dataTwoArray]
-}
-
-let pokemon = "nome"
-let habilidade = "habilidade"
-let pokeforca = "força"
-
-function getElement(pokemon) {
-    return Array.from(pokemon)
-}
-
 
 
 // console.log(pikachu(pokemon).lenght())
 console.log(pikachu(teste))
-console.log(getElement(teste))
+
+
 // console.log("nome: " + pokemon.name + "  " + " tipo: " + pokemon.types[0])
 // console.log("habilidade: " + pokemon.ability)
 // console.log("")
@@ -40,3 +23,22 @@ console.log(getElement(teste))
     // if (key == tipo) {
         //     return tipo
         // }
+
+// let nome = pokemon.name
+// let tipo = pokemon.types[0]
+// let habilidade = pokemon.ability
+//return string.charAt(0).toUpperCase() + string.slice(1);
+
+// console.log(`Nome: ${(teste.name).charAt(0).toUpperCase() + (teste.name).slice(1)} - Tipo: ${(teste.types[0]).charAt(0).toUpperCase() + (teste.types[0]).slice(1)}\nHabilidade: ${teste.ability.charAt(0).toUpperCase() + (teste.ability).slice(1)}\n
+// Linha de Evolução:
+// ${teste.preEvolution.charAt(0).toUpperCase() + (teste.preEvolution).slice(1)} >> ${teste.name.toUpperCase()} >> ${teste.evolution.charAt(0).toUpperCase() + (teste.evolution).slice(1)}\n
+// Atributos:\n
+// HP: ${teste.attributes.hp}
+// ATK: ${teste.attributes.attack} SpATK: ${teste.attributes.specialAttack}
+// DEF: ${teste.attributes.defense} SpDEF: ${teste.attributes.specialDefense}
+// SPEED: ${teste.attributes.speed}\n
+// Ataques:
+// Lv 5 -  ${teste.moves[0].name}
+// Lv 9 -  ${teste.moves[3].name}
+// Lv 20 -  ${teste.moves[1].name}
+// Lv 50 -  ${teste.moves[2].name}`)
