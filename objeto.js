@@ -2,12 +2,29 @@ const bancodeDados = require('./db')
 function letraMaius(letra){
     return letra[0].toUpperCase() + letra.slice(1)
 }
+function correndoArray(){
+  let guardar = []
+  
+  for(let i=0; i<=bancodeDados.moves.length; i++){
+    if(i == bancodeDados.moves.length){
+      break
+    }
+   guardar.push(`Lv ${bancodeDados.moves[i].lv} - ${letraMaius(bancodeDados.moves[i].name)} 
+`)
+   //return guardar
+  }
+  //console.log(guardar.join(''))
+  
+  return String(guardar.join(''))
+}
+TRAVOU T
 
-for(var i=0; i<bancodeDados.types.length; i++){
+/*for(var i=0; i<bancodeDados.types.length; i++){
     if(bancodeDados.types[i] === 'eletric'){
         tipo = 'Eletrico'
     }
 }
+
 //letraMaius(bancodeDados.name)
 let impressao = `Nome: ${letraMaius(bancodeDados.name)} - Tipo: ${tipo}
 Habilidade: ${letraMaius(bancodeDados.ability)}
@@ -22,10 +39,7 @@ Atributos:
   DEF: ${bancodeDados.attributes.defense} SpDEF: ${bancodeDados.attributes.specialDefense}
   SPEED: ${bancodeDados.attributes.speed}
 
-Ataques:
-  Lv ${bancodeDados.moves[0].lv} - ${letraMaius(bancodeDados.moves[0].name)}
-  Lv ${bancodeDados.moves[1].lv} - ${letraMaius(bancodeDados.moves[1].name)}
-  Lv ${bancodeDados.moves[2].lv} - ${letraMaius(bancodeDados.moves[2].name)}
-  Lv ${bancodeDados.moves[3].lv} - ${letraMaius(bancodeDados.moves[3].name)}`
-console.log(impressao)
-    
+Ataques:`
+console.log(impressao)*/
+console.log(correndoArray())
+  
