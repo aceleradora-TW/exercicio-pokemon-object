@@ -1,4 +1,4 @@
 const pokemon = require('./db')
-const { printPokemon } = require('./pokemon')
+const { printarPokemon } = require('./pokemon')
 
-printPokemon(pokemon)
+printarPokemon(pokemon)
