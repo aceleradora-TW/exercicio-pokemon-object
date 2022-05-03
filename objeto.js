@@ -4,22 +4,18 @@ function letraMaius(letra){
 }
 function correndoArray(){
   let guardar = []
-  
   for(let i=0; i<=bancodeDados.moves.length; i++){
     if(i == bancodeDados.moves.length){
       break
     }
-   guardar.push(`Lv ${bancodeDados.moves[i].lv} - ${letraMaius(bancodeDados.moves[i].name)} 
+   guardar.push(`  Lv ${bancodeDados.moves[i].lv} - ${letraMaius(bancodeDados.moves[i].name)} 
 `)
-   //return guardar
-  }
-  //console.log(guardar.join(''))
-  
+  }  
   return String(guardar.join(''))
 }
-TRAVOU T
 
-/*for(var i=0; i<bancodeDados.types.length; i++){
+
+for(var i=0; i<bancodeDados.types.length; i++){
     if(bancodeDados.types[i] === 'eletric'){
         tipo = 'Eletrico'
     }
@@ -40,6 +36,6 @@ Atributos:
   SPEED: ${bancodeDados.attributes.speed}
 
 Ataques:`
-console.log(impressao)*/
+console.log(impressao)
 console.log(correndoArray())
   
