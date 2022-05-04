@@ -14,8 +14,12 @@ function buscaLinhaDeEvolucao(pkm){
 function formataPrimeiraLetra(str){
   if (typeof str !== 'string') {
   return '';
-}
-return str[0].toUpperCase() + str.slice(1).toLowerCase()
+  } 
+  let palavras= str.split(" ")
+  for (let i = 0; i < palavras.length; i++) {
+    palavras[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1)
+  }
+  return palavras.join(" ")
 }
 
 function ordenaAtaque( x, y )
@@ -29,7 +33,6 @@ function printarPokemon(pkm){
   const ability = formataPrimeiraLetra(pkm.ability)
   const retornoLinhaDeEvolucao = buscaLinhaDeEvolucao(pkm)
   const ataques = pkm.moves.sort(ordenaAtaque)
-  console.log(pkm)
 
   const printPokemon = `  Nome: ${name} - Tipo: ${types}
   Habilidade: ${ability}
@@ -47,8 +50,10 @@ function printarPokemon(pkm){
   
   Ataques: 
 
-  ${ataques}
-  
+ Lv ${ataques[0].lv} - ${formataPrimeiraLetra(ataques[0].name)}
+ Lv ${ataques[1].lv} - ${formataPrimeiraLetra(ataques[1].name)}
+ Lv ${ataques[2].lv} - ${formataPrimeiraLetra(ataques[2].name)}
+ Lv ${ataques[3].lv} - ${formataPrimeiraLetra(ataques[3].name)}
   `
 
   console.log(printPokemon)
