@@ -18,12 +18,18 @@ function formataPrimeiraLetra(str){
 return str[0].toUpperCase() + str.slice(1).toLowerCase()
 }
 
+function ordenaAtaque( x, y )
+{
+ return  x.lv - y.lv 
+}
+
 function printarPokemon(pkm){
   const name = formataPrimeiraLetra(pkm.name)
   const types = formataPrimeiraLetra(pkm.types[0])
   const ability = formataPrimeiraLetra(pkm.ability)
   const retornoLinhaDeEvolucao = buscaLinhaDeEvolucao(pkm)
-
+  const ataques = pkm.moves.sort(ordenaAtaque)
+  console.log(pkm)
 
   const printPokemon = `  Nome: ${name} - Tipo: ${types}
   Habilidade: ${ability}
@@ -41,7 +47,7 @@ function printarPokemon(pkm){
   
   Ataques: 
 
-  
+  ${ataques}
   
   `
 
