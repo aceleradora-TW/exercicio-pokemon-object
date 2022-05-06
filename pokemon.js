@@ -1,44 +1,48 @@
 const { preEvolution } = require('./db')
 const pokemon = require('./db')
 
-function buscaLinhaDeEvolucao(pkm){
-  const preEvolution = formataPrimeiraLetra(pkm.preEvolution)
+function getEvolutionLine(pkm){
+  const preEvolution = capitalize(pkm.preEvolution)
   const name = pkm.name.toUpperCase()
-  const evolution = formataPrimeiraLetra(pkm.evolution)
-  let linhaDeEvolucao = [preEvolution, name, evolution]
+  const evolution = capitalize(pkm.evolution)
+  let evolutionLine = [preEvolution, name, evolution]
   
-  return linhaDeEvolucao.join(" >> ")
-
+  return evolutionLine.join(" >> ")
 }
 
-function formataPrimeiraLetra(str){
+function capitalize(str){
   if (typeof str !== 'string') {
   return '';
   } 
-  let palavras= str.split(" ")
-  for (let i = 0; i < palavras.length; i++) {
-    palavras[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1)
+  let words= str.split(" ")
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1)
   }
-  return palavras.join(" ")
+  return words.join(" ")
 }
 
-function ordenaAtaque( x, y )
-{
- return  x.lv - y.lv 
+function ordenaAtaque( moveX, moveY ){
+ return  moveX.lv - moveY.lv 
+}
+
+function formataAtaque(move){
+  const attack = ' Lv ' + move.lv + ' - ' + capitalize(move.name) + " "
+  return attack
 }
 
 function printarPokemon(pkm){
-  const name = formataPrimeiraLetra(pkm.name)
-  const types = formataPrimeiraLetra(pkm.types[0])
-  const ability = formataPrimeiraLetra(pkm.ability)
-  const retornoLinhaDeEvolucao = buscaLinhaDeEvolucao(pkm)
-  const ataques = pkm.moves.sort(ordenaAtaque)
+  const name = capitalize(pkm.name)
+  const types = capitalize(pkm.types[0])
+  const ability = capitalize(pkm.ability)
+  const evolutionLine = getEvolutionLine(pkm)
+  const attackList = pkm.moves.sort(ordenaAtaque)
+  const formatAttackList = attackList.map(formataAtaque)
 
   const printPokemon = `  Nome: ${name} - Tipo: ${types}
   Habilidade: ${ability}
 
   Linha de evolução:
-  ${retornoLinhaDeEvolucao}
+  ${evolutionLine}
   
   Atributos:
   
@@ -49,12 +53,7 @@ function printarPokemon(pkm){
   
   
   Ataques: 
-
- Lv ${ataques[0].lv} - ${formataPrimeiraLetra(ataques[0].name)}
- Lv ${ataques[1].lv} - ${formataPrimeiraLetra(ataques[1].name)}
- Lv ${ataques[2].lv} - ${formataPrimeiraLetra(ataques[2].name)}
- Lv ${ataques[3].lv} - ${formataPrimeiraLetra(ataques[3].name)}
-  `
+ ${formatAttackList.join("\n ")}`
 
   console.log(printPokemon)
 
