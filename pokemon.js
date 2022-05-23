@@ -2,17 +2,23 @@ const { preEvolution } = require('./db')
 const poke = require('./db')
 
 const ordenaLv = (numero) => {
-  let map = numero.map(level => level.lv)
-  return `${map.sort((a,b) => a-b)} - ${numero.name}`
+  //let map = numero.map(level =>level.lv)
+  //let mapName = numero.map(nome => nome.name)
+  let sort = numero.sort((a,b) => a.lv-b.lv)
+  return `
+    Lv: ${sort[0].lv} - ${sort[0].name}
+    Lv: ${sort[1].lv} - ${sort[1].name}
+    Lv: ${sort[2].lv} - ${sort[2].name}
+    Lv: ${sort[3].lv} - ${sort[3].name}
+  `
 }
-
-console.log(ordenaLv(poke.moves))
+//console.log(ordenaLv(poke.moves))
 
 const primeiraLetraMaiuscula = (nome) => `${nome[0].toUpperCase()}${nome.substring(1)}`
 const upperCase = (nome) => nome.toUpperCase()
 
 const printPokemon = pkm => {
-  console.log(`  Nome: ${primeiraLetraMaiuscula(pkm.name)} - Tipo: ${primeiraLetraMaiuscula(pkm.types[0])}
+  return `  Nome: ${primeiraLetraMaiuscula(pkm.name)} - Tipo: ${primeiraLetraMaiuscula(pkm.types[0])}
   Habilidade: ${primeiraLetraMaiuscula(pkm.ability)}
 
   Linha de evolução:
@@ -27,10 +33,7 @@ const printPokemon = pkm => {
     SPEED: ${pkm.attributes.speed}
 
   Ataques:
-    Lv ${pkm.moves[0].lv} - Tackle
-    Lv 9 - Thunder Wave
-    Lv 20 - Thunderbolt
-    Lv 50 - Thunder`)
-}
-//console.log(printPokemon(poke))
+    ${ordenaLv(pkm.moves)}`
+  }
+console.log(printPokemon(poke))
 module.exports = { printPokemon }
