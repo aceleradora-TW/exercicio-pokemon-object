@@ -1,17 +1,23 @@
+const { preEvolution } = require('./db')
+const poke = require('./db')
+
+const primeiraLetraMaiuscula = (nome) => `${nome[0].toUpperCase()}${nome.substring(1)}`
+const upperCase = (nome) => nome.toUpperCase()
 
 const printPokemon = pkm => {
-  console.log(`  Nome: Pikachu - Tipo: Eletrico
-  Habilidade: Static
+  console.log(`  Nome: ${primeiraLetraMaiuscula(pkm.name)} - Tipo: ${primeiraLetraMaiuscula(pkm.types[0])}
+  Habilidade: ${primeiraLetraMaiuscula(pkm.ability)}
 
   Linha de evolução:
-    Pichu >> PIKACHU >> Raichu
+    
+    ${primeiraLetraMaiuscula(pkm.preEvolution)} >>  ${upperCase(pkm.name)} >> ${primeiraLetraMaiuscula(pkm.evolution)}
 
   Atributos:
 
-    HP: 100
-    ATK: 55 SpATK: 100
-    DEF: 34 SpDEF: 30
-    SPEED: 150
+    HP: ${pkm.attributes.hp}
+    ATK: ${pkm.attributes.attack} SpATK: ${pkm.attributes.specialAttack}
+    DEF: ${pkm.attributes.defense} SpDEF: ${pkm.attributes.specialDefense}
+    SPEED: ${pkm.attributes.speed}
 
   Ataques:
     Lv 5 - Tackle
@@ -19,5 +25,5 @@ const printPokemon = pkm => {
     Lv 20 - Thunderbolt
     Lv 50 - Thunder`)
 }
-
+console.log(printPokemon(poke))
 module.exports = { printPokemon }
