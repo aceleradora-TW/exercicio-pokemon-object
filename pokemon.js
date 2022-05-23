@@ -1,6 +1,13 @@
 const { preEvolution } = require('./db')
 const poke = require('./db')
 
+const ordenaLv = (numero) => {
+  let map = numero.map(level => level.lv)
+  return `${map.sort((a,b) => a-b)} - ${numero.name}`
+}
+
+console.log(ordenaLv(poke.moves))
+
 const primeiraLetraMaiuscula = (nome) => `${nome[0].toUpperCase()}${nome.substring(1)}`
 const upperCase = (nome) => nome.toUpperCase()
 
@@ -20,10 +27,10 @@ const printPokemon = pkm => {
     SPEED: ${pkm.attributes.speed}
 
   Ataques:
-    Lv 5 - Tackle
+    Lv ${pkm.moves[0].lv} - Tackle
     Lv 9 - Thunder Wave
     Lv 20 - Thunderbolt
     Lv 50 - Thunder`)
 }
-console.log(printPokemon(poke))
+//console.log(printPokemon(poke))
 module.exports = { printPokemon }
