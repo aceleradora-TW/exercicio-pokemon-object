@@ -1,32 +1,17 @@
-const { preEvolution } = require('./db')
 const poke = require('./db')
 
 const ordenaLv = (numero) => {
-  //let map = numero.map(level =>level.lv)
-  //let mapName = numero.map(nome => nome.name)
+  
   let sort = numero.sort((a,b) => a.lv-b.lv)
   return `
-    Lv: ${sort[0].lv} - ${sort[0].name}
-    Lv: ${sort[1].lv} - ${sort[1].name}
-    Lv: ${sort[2].lv} - ${sort[2].nam}
-    Lv: ${sort[3].lv} - ${sort[3].name}
+    Lv: ${sort[0].lv} - ${primeiraLetraMaiuscula(sort[0].name)}
+    Lv: ${sort[1].lv} - ${primeiraLetraMaiuscula(sort[1].name)}
+    Lv: ${sort[2].lv} - ${primeiraLetraMaiuscula(sort[2].name)}
+    Lv: ${sort[3].lv} - ${primeiraLetraMaiuscula(sort[3].name)}
   `
 }
-//console.log(ordenaLv(poke.moves))
 
-const verificaEspaco = (string) => string.indexOf(' ') >= 0;
-
-const primeiraLetraMaiuscula = (nome) => {
-
-  if(verificaEspaco(nome) == true){
-    // posicao da primeira letra do segundo nome:
-    nome.charAt(nome.length+1) 
-  }else{
-    return `${nome[0].toUpperCase()}${nome.substring(1)}`
-  }
-}
-console.log(primeiraLetraMaiuscula(poke))
-
+const primeiraLetraMaiuscula = (nome) => `${nome[0].toUpperCase()}${nome.substring(1)}`
 
 const upperCase = (nome) => nome.toUpperCase()
 
@@ -48,5 +33,5 @@ const printPokemon = pkm => {
   Ataques:
     ${ordenaLv((pkm.moves))}`
   }
-//console.log(printPokemon(poke))
-module.exports = { printPokemon }
+console.log(printPokemon(poke))
+//module.exports = { printPokemon }
