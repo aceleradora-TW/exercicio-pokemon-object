@@ -36,14 +36,14 @@ const capitalizarMovimento = () =>{
   }
 }
 const loopMovimento = () =>{
-  for(let movimento of pokemon.moves){
-    return console.log(`Lv ${movimento.lv} - ${movimento.name}`);
-  }
+  const moves = pokemon.moves.map((specs)=>{
+    return `Lv ${specs.lv} - ${specs.name}`
+  });
+  return moves.join().replaceAll(",","\n  ");
 }
 const printPokemon = () => {
   capitalizarPokemon()
   capitalizarMovimento();
-  //let loop = loopMovimento();
 console.log(`Nome: ${pokemon.name} - Tipo: ${pokemon.types}
 Habilidade: ${pokemon.ability}
 
@@ -57,7 +57,7 @@ Atributos:
   SPEED: ${pokemon.attributes.speed}
    
 Ataques:
-  ${pokemon.moves}
+  ${loopMovimento()}
   `);
 }
 
