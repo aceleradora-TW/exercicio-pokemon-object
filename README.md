@@ -1,4 +1,4 @@
-# Trabalhando com objetos do javascript
+# Trabalhando com objetos do  javascript
 
 ```javascript
 const pokemon = {
