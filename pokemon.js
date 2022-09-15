@@ -1,23 +1,25 @@
+const upeerFirst = (palavra) => palavra[0].toUpperCase() + palavra.substr(1)
 
-const printPokemonn = pkm => {
-  console.log(`  Nome: Pikachu - Tipo: Eletrico
-  Habilidade: Static
+const printPokemon = pkm => {
+  console.log(`  Nome: ${upeerFirst(pkm.name)} - Tipo: ${upeerFirst(pkm.types[0])}
+  Habilidade: ${upeerFirst(pkm.ability)}
 
   Linha de evolução:
-    Pichu >> PIKACHU >> Raichu
+  ${upeerFirst(pkm.preEvolution)} >> ${(pkm.name).toUpperCase()}  >> ${upeerFirst(pkm.evolution)} 
 
   Atributos:
 
-    HP: 100
-    ATK: 55 SpATK: 100
-    DEF: 34 SpDEF: 30
-    SPEED: 150
+    HP: ${pkm.attributes.hp}
+    ATK: ${pkm.attributes.attack} SpATK: ${pkm.attributes.specialAttack}
+    DEF: ${pkm.attributes.defense}  SpDEF: ${pkm.attributes.specialDefense} 
+    SPEED: ${pkm.attributes.speed}
 
   Ataques:
-    Lv 5 - Tackle
-    Lv 9 - Thunder Wave
-    Lv 20 - Thunderbolt
-    Lv 50 - Thunder`)
-}
+    Lv ${pkm.moves[0].lv} - ${upeerFirst(pkm.moves[0].name)}
+    Lv ${pkm.moves[1].lv} - ${upeerFirst(pkm.moves[1].name)}
+    Lv ${pkm.moves[2].lv} - ${upeerFirst(pkm.moves[2].name)}
+    Lv ${pkm.moves[3].lv} - ${upeerFirst(pkm.moves[3].name)}`
+)   
+} 
 
 module.exports = { printPokemon }
