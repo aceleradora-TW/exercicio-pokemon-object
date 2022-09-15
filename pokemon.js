@@ -1,16 +1,22 @@
-const upeerFirst = (palavra) => palavra[0].toUpperCase() + palavra.substr(1);
+const upperCase = (frase) => {
+  return frase.split(" ").map(palavra => {
+    const firstLetter = palavra[0].toUpperCase()
+    const restWord = palavra.substr(1).toLowerCase()
+    return `${firstLetter}${restWord}`;
+  }).join(" ")
+}
 
-const atribuirMoves = (moves) => 
-    moves.sort((prev, next) => prev.lv-next.lv )
-        .map((move) => `    Lv ${move.lv} - ${upeerFirst(move.name)} `)
-        .join("\n");
+const atribuirMoves = (moves) =>
+  moves.sort((prev, next) => prev.lv - next.lv)
+    .map((move) => `    Lv ${move.lv} - ${upperCase(move.name)} `)
+    .join("\n");
 
 const printPokemon = pkm => {
-  console.log(`  Nome: ${upeerFirst(pkm.name)} - Tipo: ${upeerFirst(pkm.types[0])}
-  Habilidade: ${upeerFirst(pkm.ability)}
+  console.log(`  Nome: ${upperCase(pkm.name)} - Tipo: ${upperCase(pkm.types[0])}
+  Habilidade: ${upperCase(pkm.ability)}
 
   Linha de evolução:
-  ${upeerFirst(pkm.preEvolution)} >> ${(pkm.name).toUpperCase()}  >> ${upeerFirst(pkm.evolution)} 
+  ${upperCase(pkm.preEvolution)} >> ${(pkm.name).toUpperCase()}  >> ${upperCase(pkm.evolution)} 
 
   Atributos:
 
@@ -24,7 +30,7 @@ const printPokemon = pkm => {
 ${atribuirMoves(pkm.moves)}
 
   `
-)   
-} 
+  )
+}
 
 module.exports = { printPokemon }
