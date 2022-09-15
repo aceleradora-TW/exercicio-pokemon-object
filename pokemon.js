@@ -1,4 +1,9 @@
-const upeerFirst = (palavra) => palavra[0].toUpperCase() + palavra.substr(1)
+const upeerFirst = (palavra) => palavra[0].toUpperCase() + palavra.substr(1);
+
+const atribuirMoves = (moves) => 
+    moves.sort((prev, next) => prev.lv-next.lv )
+        .map((move) => `    Lv ${move.lv} - ${upeerFirst(move.name)} `)
+        .join("\n");
 
 const printPokemon = pkm => {
   console.log(`  Nome: ${upeerFirst(pkm.name)} - Tipo: ${upeerFirst(pkm.types[0])}
@@ -15,10 +20,10 @@ const printPokemon = pkm => {
     SPEED: ${pkm.attributes.speed}
 
   Ataques:
-    Lv ${pkm.moves[0].lv} - ${upeerFirst(pkm.moves[0].name)}
-    Lv ${pkm.moves[1].lv} - ${upeerFirst(pkm.moves[1].name)}
-    Lv ${pkm.moves[2].lv} - ${upeerFirst(pkm.moves[2].name)}
-    Lv ${pkm.moves[3].lv} - ${upeerFirst(pkm.moves[3].name)}`
+
+${atribuirMoves(pkm.moves)}
+
+  `
 )   
 } 
 
