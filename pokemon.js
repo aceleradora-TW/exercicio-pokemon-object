@@ -1,5 +1,5 @@
 
-const printPokemon = pkm => {
+const printPokemonn = pkm => {
   console.log(`  Nome: Pikachu - Tipo: Eletrico
   Habilidade: Static
 
