@@ -11,17 +11,25 @@ const atribuirMoves = (moves) =>
     .map((move) => `    Lv ${move.lv} - ${upperCase(move.name)} `)
     .join("\n");
 
-const mostrarTipos = (types)=> types.map((type, index)=>{
-    return index==(types.length)-1? `${upperCase(type)}`: `${upperCase(type)}/`
-  }).join("")
+const mostrarTipos = (types) => types.map((type, index) => {
+  return index == (types.length) - 1 ? `${upperCase(type)}` : `${type}/`
+}).join("")
 
+const mostrarEvolucoa = (pokemon) => {
+  const preEvolution = pokemon.preEvolution ?
+    `${upperCase(pokemon.preEvolution)} >> ` : ''
+  const evolution = pokemon.evolution ?
+    ` >> ${upperCase(pokemon.evolution)}` : ''
+
+  return preEvolution + pokemon.name.toUpperCase() + evolution
+}
 
 const printPokemon = pkm => {
   console.log(`  Nome: ${upperCase(pkm.name)} - Tipo: ${mostrarTipos(pkm.types)}
   Habilidade: ${upperCase(pkm.ability)}
 
   Linha de evolução:
-  ${upperCase(pkm.preEvolution)} >> ${(pkm.name).toUpperCase()}  >> ${upperCase(pkm.evolution)} 
+  ${mostrarEvolucoa(pkm)} 
 
   Atributos:
 
@@ -32,10 +40,6 @@ const printPokemon = pkm => {
 
   Ataques:
 
-${atribuirMoves(pkm.moves)}
-
-  `
-  )
-}
+${atribuirMoves(pkm.moves)}`)}
 
 module.exports = { printPokemon }
