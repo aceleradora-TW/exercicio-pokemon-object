@@ -11,8 +11,13 @@ const atribuirMoves = (moves) =>
     .map((move) => `    Lv ${move.lv} - ${upperCase(move.name)} `)
     .join("\n");
 
+const mostrarTipos = (types)=> types.map((type, index)=>{
+    return index==(types.length)-1? `${upperCase(type)}`: `${upperCase(type)}/`
+  }).join("")
+
+
 const printPokemon = pkm => {
-  console.log(`  Nome: ${upperCase(pkm.name)} - Tipo: ${upperCase(pkm.types[0])}
+  console.log(`  Nome: ${upperCase(pkm.name)} - Tipo: ${mostrarTipos(pkm.types)}
   Habilidade: ${upperCase(pkm.ability)}
 
   Linha de evolução:
