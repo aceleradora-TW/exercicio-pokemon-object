@@ -1,23 +1,36 @@
+const { capitalizaString } = require('./utils/capitalizaString');
+const { retornarAtributo } = require('./utils/retornarAtributo');
+const { retornarMovimento } = require('./utils/retornarMovimento');
+
+
+const retornaNome = (item) => capitalizaString(item.name);
+
+const retornaTipo = (item) => capitalizaString(item.types[0][0]) + item.types[0].slice(1) + "o";
+
+const retornaHabilidade = (item) => capitalizaString(item.ability);
+
+const retornaEvolucoes = (item) => capitalizaString(item.preEvolution) + " >> " + item.name.toUpperCase() + " >> " + capitalizaString(item.evolution);
+
 
 const printPokemon = pkm => {
-  console.log(`  Nome: Pikachu - Tipo: Eletrico
-  Habilidade: Static
+  console.log(`  Nome: ${retornaNome(pkm)} - Tipo: ${retornaTipo(pkm)}
+  Habilidade: ${retornaHabilidade(pkm)}
 
   Linha de evolução:
-    Pichu >> PIKACHU >> Raichu
+    ${retornaEvolucoes(pkm)}
 
   Atributos:
 
-    HP: 100
-    ATK: 55 SpATK: 100
-    DEF: 34 SpDEF: 30
-    SPEED: 150
+    HP: ${retornarAtributo(pkm, 'hp')}
+    ATK: ${retornarAtributo(pkm, 'attack')} SpATK: ${retornarAtributo(pkm, 'specialAttack')}
+    DEF: ${retornarAtributo(pkm, 'defense')} SpDEF: ${retornarAtributo(pkm, 'specialDefense')}
+    SPEED: ${retornarAtributo(pkm, 'speed')}
 
   Ataques:
-    Lv 5 - Tackle
-    Lv 9 - Thunder Wave
-    Lv 20 - Thunderbolt
-    Lv 50 - Thunder`)
+    Lv 5 - ${retornarMovimento(pkm, 5)}
+    Lv 9 - ${retornarMovimento(pkm, 9)}
+    Lv 20 - ${retornarMovimento(pkm, 20)}
+    Lv 50 - ${retornarMovimento(pkm, 50)}`);
 }
 
 module.exports = { printPokemon }
