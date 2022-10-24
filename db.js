@@ -4,17 +4,21 @@ const pokemon = {
   moves: [
     {
       name: "tackle",
-      lv: 5
-    }, {
+      lv: 5,
+    },
+    {
       name: "thunderbolt",
-      lv: 20
-    }, {
+      lv: 20,
+    },
+    {
       name: "thunder",
-      lv: 50
-    }, {
+      lv: 50,
+    },
+    {
       name: "thunder wave",
-      lv: 9
-    }],
+      lv: 9,
+    },
+  ],
   ability: "static",
   preEvolution: "pichu",
   evolution: "raichu",
@@ -24,8 +28,8 @@ const pokemon = {
     defense: 34,
     specialAttack: 100,
     specialDefense: 30,
-    speed: 150
-  }
-}
+    speed: 150,
+  },
+};
 
-module.exports = pokemon
+module.exports = pokemon;
