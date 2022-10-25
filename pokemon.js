@@ -8,6 +8,8 @@ const atack = (ataques) => {
     vetorAtacks.push(value.lv)
   });
 
+
+  
   return mapeando;
 };
 
