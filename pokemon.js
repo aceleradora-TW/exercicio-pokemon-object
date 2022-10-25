@@ -1,19 +1,56 @@
 const pokemon = require("./db");
+let vetorAtacks = [];
+console.log()
 
-const printPokemon = (pkm) => {
-  console.log(`
+const atack = (ataques) => {
+  let mapeando = ataques.moves.map((value, posicao) => {
+    vetorAtacks.push(value.name);
+    vetorAtacks.push(value.lv)
+  });
+
+  return mapeando;
+};
+
+atack(pokemon);
+console.log(vetorAtacks);
+
+const printPokemon = (pkm) => {};
+printPokemon(pokemon);
+
+printPokemon(pokemon);
+
+module.exports = { printPokemon };
+
+/*
+ let temp;
+  let mapeando = pkm.moves.map((moves,posicion,arrayInt)=>{
+    temp = moves.lv
+    console.log(arrayInt.lv)
+  })
+  console.log(temp)
+  return mapeando
+
+
+
+
+
+
+
+
+console.log(`
   Nome: ${pkm.name.toUpperCase(1).slice(0, 1) + pkm.name.slice(1)} - Tipo:${
     pkm.types[0].toUpperCase(1).slice(0, 1) + pkm.types[0].slice(1).concat("o")
   }
  Habilidades: ${pkm.ability.toUpperCase(1).slice(0, 1) + pkm.ability.slice(1)}
-  Linha de evolução:         
+ 
+ Linha de evolução:         
   ${
     pkm.preEvolution.toUpperCase(1).slice(0, 1) + pkm.preEvolution.slice(1)
   } >> ${pkm.name.toUpperCase()} >> ${
     pkm.evolution.toUpperCase().slice(0, 1) + pkm.evolution.slice(1)
   }
 
-  
+
   Atributos:
 
   hp: ${pkm.attributes.hp}
@@ -34,11 +71,7 @@ const printPokemon = (pkm) => {
   Lv  ${pkm.moves[2].lv} - ${
     pkm.moves[2].name.toUpperCase(1).slice(0, 1) + pkm.moves[2].name.slice(1)
   }
-  `);
-};
-printPokemon(pokemon);
-
-module.exports = { printPokemon };
+  `);*/
 
 /*
 Objt[0].titulo2.push({id2: 'valor'});
