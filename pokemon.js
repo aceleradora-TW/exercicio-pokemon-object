@@ -1,29 +1,45 @@
-const { attributes, preEvolution, name, types, ability, evolution, moves } = require("./db");
+//const { attributes, preEvolution, name, types, ability, evolution, moves } = require("./db");
+const { types } = require("./db");
 const pokemon = require("./db");
 
-
-let guardarTipo = []
 const tipo = (vetorTipos) => {
-  let mapeandoTipo = pokemon.types.map((value, posicao) => {
-    guardarTipo.push(value.toUpperCase(1))
+  return vetorTipos.types.map((type) => {
+    return type.toUpperCase()
   })
-  return mapeandoTipo
 }
-tipo(pokemon)
+console.log(tipo(pokemon))
 
 
-let guardarNome = []
-const nome = (mostrarNome) => {
-  let mapeandoNome = pokemon.name;
-  guardarNome.push(mapeandoNome)
-  console.log(`
-Nome: ${name.toUpperCase(1).slice(0, 1) + name.slice(1)} - Tipo: ${guardarTipo[0].toUpperCase(1).slice(0, 1) + types[0].slice(1).concat("o")
+const transformarMaiuscula = (palavra) => {
+  return palavra.toUpperCase().slice(0, 1) + palavra.slice(1)
+}
+//console.log(transformarMaiuscula("garrafa"))
+
+
+const adaptarPokemon = (pokemon) => {
+  let name = transformarMaiuscula(pokemon.name)
+  for (i = 0; i <= pokemon.types.length; i++) {
+    console.log(pokemon.types[i])
+  }
+  let tipo = transformarMaiuscula(pokemon.types)
+  let resposta = `Nome: ${name} - Tipo: ${tipo}`
+  console.log(resposta)
+}
+adaptarPokemon(pokemon)
+
+
+//let guardarNome = []
+//const nome = (mostrarNome) => {
+  //let mapeandoNome = pokemon.name;
+  //  guardarNome.push(mapeandoNome)
+  //console.log(`
+/*Nome: ${name.toUpperCase(1).slice(0, 1) + name.slice(1)} - Tipo: ${types[0].toUpperCase(1).slice(0, 1) + types[0].slice(1).concat("o")
     }`)
   return mapeandoNome
 }
 nome(pokemon)
 
-
+/*
 //let guardarHabilidade = []
 const habilidade = (mostrarHabilidade) => {
   let mapeandoHabilidade = pokemon.ability;
