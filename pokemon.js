@@ -1,38 +1,41 @@
 //const { attributes, preEvolution, name, types, ability, evolution, moves } = require("./db");
-const { types } = require("./db");
+
 const pokemon = require("./db");
 
 const tipo = (vetorTipos) => {
   return vetorTipos.types.map((type) => {
-    return type.toUpperCase()
-  })
-}
-console.log(tipo(pokemon))
-
+    return type.toUpperCase();
+  });
+};
+console.log(tipo(pokemon));
 
 const transformarMaiuscula = (palavra) => {
-  return palavra.toUpperCase().slice(0, 1) + palavra.slice(1)
-}
+  return palavra.toUpperCase().slice(0, 1) + palavra.slice(1);
+};
 //console.log(transformarMaiuscula("garrafa"))
 
-
 const adaptarPokemon = (pokemon) => {
-  let name = transformarMaiuscula(pokemon.name)
-  for (i = 0; i <= pokemon.types.length; i++) {
-    console.log(pokemon.types[i])
+  let name = transformarMaiuscula(pokemon.name);
+  //let tipo = [];
+  for (i = 0; i < pokemon.types.length; i++) {
+   // tipo.push(transformarMaiuscula(pokemon.types[i]));
+   let tipo = (transformarMaiuscula(pokemon.types[i]));
+   let resposta = `Nome: ${name} - Tipo: ${tipo}`;
+   console.log(resposta);
+   
   }
-  let tipo = transformarMaiuscula(pokemon.types)
-  let resposta = `Nome: ${name} - Tipo: ${tipo}`
-  console.log(resposta)
-}
-adaptarPokemon(pokemon)
 
+ 
+
+
+};
+adaptarPokemon(pokemon);
 
 //let guardarNome = []
 //const nome = (mostrarNome) => {
-  //let mapeandoNome = pokemon.name;
-  //  guardarNome.push(mapeandoNome)
-  //console.log(`
+//let mapeandoNome = pokemon.name;
+//  guardarNome.push(mapeandoNome)
+//console.log(`
 /*Nome: ${name.toUpperCase(1).slice(0, 1) + name.slice(1)} - Tipo: ${types[0].toUpperCase(1).slice(0, 1) + types[0].slice(1).concat("o")
     }`)
   return mapeandoNome
@@ -164,10 +167,6 @@ const printPokemon = (pkm) => {
 }
 printPokemon(pokemon)
 module.exports = { printPokemon }*/
-
-
-
-
 
 /*exemplo 2- funcoes
 const { preEvolution } = require("./db");
