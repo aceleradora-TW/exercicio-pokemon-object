@@ -1,6 +1,4 @@
-//const { attributes, preEvolution, name, types, ability, evolution, moves } = require("./db");
 
-const { name } = require("./db");
 const pokemon = require("./db");
 
 const tipo = (vetorTipos) => {
@@ -36,16 +34,6 @@ const adaptarHabiliddade = (pokemon) => {
 }
 adaptarHabiliddade(pokemon)
 
-//let guardarHabilidade = []
-const habilidade = (mostrarHabilidade) => {
-  let mapeandoHabilidade = pokemon.ability;
-  //guardarHabilidade.push(mapeandoHabilidade)
-  console.log(`Habilidade: ${ability.toUpperCase(1).slice(0, 1) + ability.slice(1)}`)
-  return mapeandoHabilidade
-}
-
-habilidade(pokemon)
-
 
 const adaptarEvolucoes = (pokemon) => {
   let preEvolucao = transformarMaiuscula(pokemon.preEvolution)
@@ -59,17 +47,31 @@ adaptarEvolucoes(pokemon)
 
 
 const adaptarAtributos = (pokemon) => {
-  let atributos = (pokemon.attributes)
   console.log(`
 Atributos:
-  
-  HP: ${attributes.hp}
-  ATK: ${attributes.attack}  SpATK: ${attributes.specialAttack}
-  DEF: ${attributes.defense}  SpDEF: ${attributes.specialDefense}
-  SPEED: ${attributes.speed}
-  `)
+      
+      HP: ${pokemon.hp}
+      ATK: ${pokemon.attack}  SpATK: ${pokemon.specialAttack}
+      DEF: ${pokemon.defense}  SpDEF: ${pokemon.specialDefense}
+      SPEED: ${pokemon.speed}
+      `)
+
 }
-adaptarAtributos(pokemon)
+adaptarAtributos(pokemon.attributes)
+
+
+const adaptarAtaques = (moves) => {
+  let value;
+  moves.sort((a, b) => a.lv - b.lv);
+  moves.map((valor) => {
+    value = valor
+    console.log(`
+  Ataques:
+      
+      Lv ${value.lv} - ${transformarMaiuscula(value.name)}`)
+  })
+}
+adaptarAtaques(pokemon.moves)
 
 
 
@@ -209,6 +211,8 @@ const printPokemon = (pkm) => {
 }
 printPokemon(pokemon)
 module.exports = { printPokemon }*/
+
+
 
 /*exemplo 2- funcoes
 const { preEvolution } = require("./db");
