@@ -1,5 +1,6 @@
 //const { attributes, preEvolution, name, types, ability, evolution, moves } = require("./db");
 
+const { name } = require("./db");
 const pokemon = require("./db");
 
 const tipo = (vetorTipos) => {
@@ -7,29 +8,70 @@ const tipo = (vetorTipos) => {
     return type.toUpperCase();
   });
 };
-console.log(tipo(pokemon));
+//console.log(tipo(pokemon));
 
 const transformarMaiuscula = (palavra) => {
   return palavra.toUpperCase().slice(0, 1) + palavra.slice(1);
 };
-//console.log(transformarMaiuscula("garrafa"))
+
+const transformarTudoMaiusculo = (palavra) => {
+  return palavra.toUpperCase()
+}
 
 const adaptarPokemon = (pokemon) => {
+  let resposta;
   let name = transformarMaiuscula(pokemon.name);
-  //let tipo = [];
   for (i = 0; i < pokemon.types.length; i++) {
-   // tipo.push(transformarMaiuscula(pokemon.types[i]));
-   let tipo = (transformarMaiuscula(pokemon.types[i]));
-   let resposta = `Nome: ${name} - Tipo: ${tipo}`;
-   console.log(resposta);
-   
+    let tipo = (transformarMaiuscula(pokemon.types[0]));
+    resposta = `Nome: ${name} - Tipo: ${tipo}`;
   }
-
- 
-
-
+  console.log(resposta);
 };
 adaptarPokemon(pokemon);
+
+
+const adaptarHabiliddade = (pokemon) => {
+  let habilidade = transformarMaiuscula(pokemon.ability)
+  console.log(`Habilidade: ${habilidade}`)
+}
+adaptarHabiliddade(pokemon)
+
+//let guardarHabilidade = []
+const habilidade = (mostrarHabilidade) => {
+  let mapeandoHabilidade = pokemon.ability;
+  //guardarHabilidade.push(mapeandoHabilidade)
+  console.log(`Habilidade: ${ability.toUpperCase(1).slice(0, 1) + ability.slice(1)}`)
+  return mapeandoHabilidade
+}
+
+habilidade(pokemon)
+
+
+const adaptarEvolucoes = (pokemon) => {
+  let preEvolucao = transformarMaiuscula(pokemon.preEvolution)
+  let nome = transformarTudoMaiusculo(pokemon.name)
+  let evolucao = transformarMaiuscula(pokemon.evolution)
+  console.log(`
+Linha de evolução: 
+  ${preEvolucao} >> ${nome} >> ${evolucao}`)
+}
+adaptarEvolucoes(pokemon)
+
+
+const adaptarAtributos = (pokemon) => {
+  let atributos = (pokemon.attributes)
+  console.log(`
+Atributos:
+  
+  HP: ${attributes.hp}
+  ATK: ${attributes.attack}  SpATK: ${attributes.specialAttack}
+  DEF: ${attributes.defense}  SpDEF: ${attributes.specialDefense}
+  SPEED: ${attributes.speed}
+  `)
+}
+adaptarAtributos(pokemon)
+
+
 
 //let guardarNome = []
 //const nome = (mostrarNome) => {

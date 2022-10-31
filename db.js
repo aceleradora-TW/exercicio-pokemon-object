@@ -1,6 +1,6 @@
 const pokemon = {
   name: "pikachu",
-  types: ["eletric", "normal", "alu"],
+  types: ["eletric", "normal"],
   moves: [
     {
       name: "tackle",
