@@ -63,12 +63,10 @@ adaptarAtributos(pokemon.attributes)
 const adaptarAtaques = (moves) => {
   let value;
   moves.sort((a, b) => a.lv - b.lv);
+  console.log("Ataques:")
   moves.map((valor) => {
     value = valor
-    console.log(`
-  Ataques:
-      
-      Lv ${value.lv} - ${transformarMaiuscula(value.name)}`)
+    console.log(`Lv ${value.lv} - ${transformarMaiuscula(value.name)}`)
   })
 }
 adaptarAtaques(pokemon.moves)
