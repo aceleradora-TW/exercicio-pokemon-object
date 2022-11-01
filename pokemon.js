@@ -1,4 +1,3 @@
-
 const pokemon = require("./db");
 
 const tipo = (vetorTipos) => {
@@ -12,39 +11,46 @@ const transformarMaiuscula = (palavra) => {
   return palavra.toUpperCase().slice(0, 1) + palavra.slice(1);
 };
 
+const adaptarAtaque = (ataque) => {
+  let atackMapeando = ataque.moves;
+};
+//adaptarAtaque(pokemon)
+/*
+o que pode fazer é, dar um split por " " (espaço em branco), isso vai virar um array de string
+aí só percorrer o array, mudar só a primeira letra e remontar o array com todas as palavras com maiuscula 
+e depois juntar tudo de novo
+*/
+
 const transformarTudoMaiusculo = (palavra) => {
-  return palavra.toUpperCase()
-}
+  return palavra.toUpperCase();
+};
 
 const adaptarPokemon = (pokemon) => {
   let resposta;
   let name = transformarMaiuscula(pokemon.name);
   for (i = 0; i < pokemon.types.length; i++) {
-    let tipo = (transformarMaiuscula(pokemon.types[0]));
+    let tipo = transformarMaiuscula(pokemon.types[0]);
     resposta = `Nome: ${name} - Tipo: ${tipo}`;
   }
   console.log(resposta);
 };
 adaptarPokemon(pokemon);
 
-
 const adaptarHabiliddade = (pokemon) => {
-  let habilidade = transformarMaiuscula(pokemon.ability)
-  console.log(`Habilidade: ${habilidade}`)
-}
-adaptarHabiliddade(pokemon)
-
+  let habilidade = transformarMaiuscula(pokemon.ability);
+  console.log(`Habilidade: ${habilidade}`);
+};
+adaptarHabiliddade(pokemon);
 
 const adaptarEvolucoes = (pokemon) => {
-  let preEvolucao = transformarMaiuscula(pokemon.preEvolution)
-  let nome = transformarTudoMaiusculo(pokemon.name)
-  let evolucao = transformarMaiuscula(pokemon.evolution)
+  let preEvolucao = transformarMaiuscula(pokemon.preEvolution);
+  let nome = transformarTudoMaiusculo(pokemon.name);
+  let evolucao = transformarMaiuscula(pokemon.evolution);
   console.log(`
 Linha de evolução: 
-  ${preEvolucao} >> ${nome} >> ${evolucao}`)
-}
-adaptarEvolucoes(pokemon)
-
+  ${preEvolucao} >> ${nome} >> ${evolucao}`);
+};
+adaptarEvolucoes(pokemon);
 
 const adaptarAtributos = (pokemon) => {
   console.log(`
@@ -54,24 +60,28 @@ Atributos:
       ATK: ${pokemon.attack}  SpATK: ${pokemon.specialAttack}
       DEF: ${pokemon.defense}  SpDEF: ${pokemon.specialDefense}
       SPEED: ${pokemon.speed}
-      `)
-
-}
-adaptarAtributos(pokemon.attributes)
-
+      `);
+};
+adaptarAtributos(pokemon.attributes);
 
 const adaptarAtaques = (moves) => {
-  let value;
   moves.sort((a, b) => a.lv - b.lv);
-  console.log("Ataques:")
-  moves.map((valor) => {
-    value = valor
-    console.log(`Lv ${value.lv} - ${transformarMaiuscula(value.name)}`)
-  })
-}
-adaptarAtaques(pokemon.moves)
 
+  const mapeando = moves.map((valor) => {
+    const ataque = valor.name.split(" ");
+    const ataqueName = ataque
+      .map((x) => {
+        return transformarMaiuscula(x);
+      })
+      .join(" ");
 
+    return `      Lv ${valor.lv} - ${ataqueName}`;
+  });
+  console.log(`Ataques:
+${mapeando.join("\n")}`);
+};
+
+adaptarAtaques(pokemon.moves);
 
 //let guardarNome = []
 //const nome = (mostrarNome) => {
@@ -209,8 +219,6 @@ const printPokemon = (pkm) => {
 }
 printPokemon(pokemon)
 module.exports = { printPokemon }*/
-
-
 
 /*exemplo 2- funcoes
 const { preEvolution } = require("./db");
