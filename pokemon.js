@@ -1,88 +1,78 @@
-const pokemon = require("./db");
-
-const tipo = (vetorTipos) => {
-  return vetorTipos.types.map((type) => {
-    return type.toUpperCase();
-  });
-};
-//console.log(tipo(pokemon));
+const pokemon = require("./db-raticate");
 
 const transformarMaiuscula = (palavra) => {
   return palavra.toUpperCase().slice(0, 1) + palavra.slice(1);
-};
+}
 
-const adaptarAtaque = (ataque) => {
-  let atackMapeando = ataque.moves;
-};
-//adaptarAtaque(pokemon)
-/*
-o que pode fazer é, dar um split por " " (espaço em branco), isso vai virar um array de string
-aí só percorrer o array, mudar só a primeira letra e remontar o array com todas as palavras com maiuscula 
-e depois juntar tudo de novo
-*/
+const tipo = (types) => {
+  return types.map(type => transformarMaiuscula(type)).join("/")
+}
 
-const transformarTudoMaiusculo = (palavra) => {
-  return palavra.toUpperCase();
-};
+const evolucoes = (pkm) => {
+  const preEvolucao = pokemon.preEvolution && transformarMaiuscula(pokemon.preEvolution)
+  const nome = pokemon.name.toUpperCase()
+  const evolucao = pokemon.evolution && transformarMaiuscula(pokemon.evolution)
 
-const adaptarPokemon = (pokemon) => {
-  let resposta;
-  let name = transformarMaiuscula(pokemon.name);
-  for (i = 0; i < pokemon.types.length; i++) {
-    let tipo = transformarMaiuscula(pokemon.types[0]);
-    resposta = `Nome: ${name} - Tipo: ${tipo}`;
+  if (pokemon.preEvolution && pokemon.evolution) {
+    return [preEvolucao, nome, evolucao].join(" >> ")
   }
-  console.log(resposta);
-};
-adaptarPokemon(pokemon);
 
-const adaptarHabiliddade = (pokemon) => {
-  let habilidade = transformarMaiuscula(pokemon.ability);
-  console.log(`Habilidade: ${habilidade}`);
-};
-adaptarHabiliddade(pokemon);
+  if (!pokemon.preEvolution && pokemon.evolution) {
+    return [nome, evolucao].join(" >> ")
+  }
 
-const adaptarEvolucoes = (pokemon) => {
-  let preEvolucao = transformarMaiuscula(pokemon.preEvolution);
-  let nome = transformarTudoMaiusculo(pokemon.name);
-  let evolucao = transformarMaiuscula(pokemon.evolution);
-  console.log(`
-Linha de evolução: 
-  ${preEvolucao} >> ${nome} >> ${evolucao}`);
-};
-adaptarEvolucoes(pokemon);
+  if (!pokemon.evolution && pokemon.preEvolution) {
+    return [preEvolucao, nome].join(" >> ")
+  }
 
-const adaptarAtributos = (pokemon) => {
-  console.log(`
-Atributos:
-      
-      HP: ${pokemon.hp}
-      ATK: ${pokemon.attack}  SpATK: ${pokemon.specialAttack}
-      DEF: ${pokemon.defense}  SpDEF: ${pokemon.specialDefense}
-      SPEED: ${pokemon.speed}
-      `);
-};
-adaptarAtributos(pokemon.attributes);
+  return nome
+}
 
-const adaptarAtaques = (moves) => {
-  moves.sort((a, b) => a.lv - b.lv);
+const adaptarMoves = (moves) => {
+  return moves
+    .sort((a, b) => a.lv - b.lv)
+    .map(move => {
+      const novosAtaques = move.name
+        .split(" ")
+        .map(novosAtaques => transformarMaiuscula(novosAtaques))
+        .join(" ")
+      return `   Lv ${move.lv} - ${novosAtaques}`
+    })
+    .join("\n")
+}
 
-  const mapeando = moves.map((valor) => {
-    const ataque = valor.name.split(" ");
-    const ataqueName = ataque
-      .map((x) => {
-        return transformarMaiuscula(x);
-      })
-      .join(" ");
 
-    return `      Lv ${valor.lv} - ${ataqueName}`;
-  });
-  console.log(`Ataques:
-${mapeando.join("\n")}`);
-};
+const printPokemon = (pkm) => {
 
-adaptarAtaques(pokemon.moves);
+  const { hp, attack, specialAttack, defense, specialDefense, speed } = pokemon.attributes
 
+  console.log(`  Nome: ${transformarMaiuscula(pokemon.name)} - Tipo: ${tipo(pokemon.types)}
+  Habilidade: ${transformarMaiuscula(pokemon.ability)}
+
+  Linha de evolução:
+    ${evolucoes(pokemon)}
+
+  Atributos:
+
+    HP: ${hp}
+    ATK: ${attack} SpATK: ${specialAttack}
+    DEF: ${defense} SpDEF: ${specialDefense}
+    SPEED: ${speed}
+
+
+  Ataques:
+${adaptarMoves(pokemon.moves)} `)
+}
+printPokemon(pokemon)
+
+
+
+
+
+
+
+
+//exemplo 1 - funcoes
 //let guardarNome = []
 //const nome = (mostrarNome) => {
 //let mapeandoNome = pokemon.name;
@@ -176,7 +166,7 @@ console.log(`Ataques:
 
 
 
-/*exemplo console.log
+/*exemplo só com console.log
 const pokemon = require("./db");
 const printPokemon = (pkm) => {
 
@@ -219,6 +209,8 @@ const printPokemon = (pkm) => {
 }
 printPokemon(pokemon)
 module.exports = { printPokemon }*/
+
+
 
 /*exemplo 2- funcoes
 const { preEvolution } = require("./db");
