@@ -1,4 +1,4 @@
-const pokemon = require("./db-raticate");
+const pokemon = require("./db");
 
 const transformarMaiuscula = (palavra) => {
   return palavra.toUpperCase().slice(0, 1) + palavra.slice(1);
@@ -8,7 +8,7 @@ const tipo = (types) => {
   return types.map(type => transformarMaiuscula(type)).join("/")
 }
 
-const evolucoes = (pkm) => {
+const evolucoes = (pokemon) => {
   const preEvolucao = pokemon.preEvolution && transformarMaiuscula(pokemon.preEvolution)
   const nome = pokemon.name.toUpperCase()
   const evolucao = pokemon.evolution && transformarMaiuscula(pokemon.evolution)
@@ -42,7 +42,7 @@ const adaptarMoves = (moves) => {
 }
 
 
-const printPokemon = (pkm) => {
+const printPokemon = (pokemon) => {
 
   const { hp, attack, specialAttack, defense, specialDefense, speed } = pokemon.attributes
 
